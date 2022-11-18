@@ -79,3 +79,8 @@ class ElibDBConnector:
         self._cursor.execute(drop)
 
         return res
+
+    def get_table_data(self, table_name):
+        table = "SELECT * FROM {table_name}".format(table_name=table_name)
+        self._cursor.execute(table)
+        return self._cursor.fetchall()

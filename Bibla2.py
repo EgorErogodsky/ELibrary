@@ -12,6 +12,16 @@ import sys
 from elib_db_connector import *
 
 
+def fill_table(table, data):
+    table.setRowCount(len(data))
+    for m, row in enumerate(data):
+        for n, elem in enumerate(row):
+            item = QtWidgets.QTableWidgetItem(elem)
+            table.setItem(m, n, item)
+    table.resizeColumnsToContents()
+    table.resizeRowsToContents()
+
+
 class Ui_MainWindow(object):
     def __init__(self):
         self.elib_dbc = ElibDBConnector(host='localhost',
@@ -822,46 +832,64 @@ class Ui_MainWindow(object):
         self.label_7.setText(_translate("MainWindow", "Добавить -->"))
         self.AddButton.setText(_translate("MainWindow", "Добавить"))
 
-        def search():
-            author = self.AuthorEdit.text()
-            author_strict = self.AuthorCheckBox.isChecked()
-            name = self.BooknameEdit.text()
-            name_strict = self.BookNameCheckbox.isChecked()
-            year_of_publishing = self.YearEdit.text()
-            year_sign = self.YearcomboBox.currentIndex()
-            search_res = self.elib_dbc.flexible_books_search(author,
-                                                             year_of_publishing, year_sign)
+        self.SearchButton.clicked.connect(self._search)
+        self.DeleteButton.clicked.connect(self._delete)
+        self.AddButton.clicked.connect(self._add)
 
-        self.SearchButton.clicked.connect(search)
+        self._update_table('books')
+        self._update_table('readers')
+        self._update_table('checked_out_books')
 
-        def delete():
-            if (self.ResultsTab.currentIndex() == 0):
-                print("Книги")
-                print(self.BooksTable.currentRow())
-            if (self.ResultsTab.currentIndex() == 1):
-                print("Читатели")
-                print(self.ReadersTable.currentRow())
-            if (self.ResultsTab.currentIndex() == 2):
-                print("Выданные книги")
-                print(self.GivenTable.currentRow())
+    def _search(self):
+        author = self.AuthorEdit.text()
+        author_strict = self.AuthorCheckBox.isChecked()
+        name = self.BooknameEdit.text()
+        name_strict = self.BookNameCheckbox.isChecked()
+        year_of_publishing = self.YearEdit.text()
+        year_sign = self.YearcomboBox.currentText()
+        search_res = self.elib_dbc.flexible_books_search(author=author,
+                                                         title=name,
+                                                         year_of_publishing=year_of_publishing,
+                                                         author_accurate=author_strict,
+                                                         title_accurate=name_strict,
+                                                         year_sign=year_sign)
+        fill_table(self.BooksTable, search_res)
 
-        self.DeleteButton.clicked.connect(delete)
+    def _delete(self):
+        if self.ResultsTab.currentIndex() == 0:
+            print("Книги")
+            print(self.BooksTable.currentRow())
+        if self.ResultsTab.currentIndex() == 1:
+            print("Читатели")
+            print(self.ReadersTable.currentRow())
+        if self.ResultsTab.currentIndex() == 2:
+            print("Выданные книги")
+            print(self.GivenTable.currentRow())
 
-        def add():
-            # rowPosition = self.ReadersTable.rowCount()
-            # self.ReadersTable.insertRow(rowPosition)
-            if (self.ResultsTab.currentIndex() == 0):
-                print("Книги")
-            if (self.ResultsTab.currentIndex() == 1):
-                print("Читатели")
-            if (self.ResultsTab.currentIndex() == 2):
-                print("Выданные книги")
+    def _add(self):
+        # rowPosition = self.ReadersTable.rowCount()
+        # self.ReadersTable.insertRow(rowPosition)
+        if self.ResultsTab.currentIndex() == 0:
+            print("Книги")
+        if self.ResultsTab.currentIndex() == 1:
+            print("Читатели")
+        if self.ResultsTab.currentIndex() == 2:
+            print("Выданные книги")
 
-        self.AddButton.clicked.connect(add)
+    def _update_table(self, table_name):
+        if table_name == 'books':
+            table = self.BooksTable
+        elif table_name == 'readers':
+            table = self.ReadersTable
+        elif table_name == 'checked_out_books':
+            table = self.GivenTable
+        else:
+            raise ValueError('Неверное имя таблицы!')
+        data = self.elib_dbc.get_table_data(table_name)
+        fill_table(table, data)
 
 
 if __name__ == "__main__":
-
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
