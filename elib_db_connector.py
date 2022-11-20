@@ -23,6 +23,28 @@ class ElibDBConnector:
                               'year_of_publishing': str(year_of_publishing),
                               'num_of_copies': str(num_of_copies)})
 
+    def delete_book_or_reader(self, table, id):
+        if table == 'books':
+            col = 'book_id'
+        elif table == 'readers':
+            col = 'library_card'
+        else:
+            raise ValueError
+
+        delete_rows = ("DELETE FROM {table} "
+                       "WHERE {col} = {id};"
+                       "DELETE FROM checked_out_books "
+                       "WHERE {col} = {id}").format(table=table,
+                                                    col=col,
+                                                    id=id)
+        self._cursor.execute(delete_rows)
+
+    def delete_checked_book(self, book_id, library_card):
+        delete_row = ("DELETE FROM checked_out_books "
+                      "WHERE book_id = {book_id} "
+                      "AND library_card = {library_card}").format(book_id=book_id,
+                                                                  library_card=library_card)
+
     def search_book_by_id(self, id):
         search = ("SELECT * FROM books "
                   "WHERE book_id = %s")
