@@ -29,6 +29,10 @@ class ELibrary(Ui_MainWindow):
 
         self.IdEdit.textEdited.connect(self._id_edit_changed)
 
+        self.BooksTable.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.ReadersTable.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.GivenTable.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+
         self._update_table('books')
         self._update_table('readers')
         self._update_table('checked_out_books')
