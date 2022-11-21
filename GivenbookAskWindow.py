@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'AddReader.ui'
+# Form implementation generated from reading ui file 'AddGivenbook.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -41,9 +41,9 @@ class Ui_AddbookWindow(object):
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_3)
-        self.SecondNameEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
-        self.SecondNameEdit.setObjectName("SecondNameEdit")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.SecondNameEdit)
+        self.VidanoEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
+        self.VidanoEdit.setObjectName("VidanoEdit")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.VidanoEdit)
         self.label_4 = QtWidgets.QLabel(self.formLayoutWidget)
         self.label_4.setMinimumSize(QtCore.QSize(150, 40))
         font = QtGui.QFont()
@@ -51,9 +51,9 @@ class Ui_AddbookWindow(object):
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_4)
-        self.NameEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
-        self.NameEdit.setObjectName("NameEdit")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.NameEdit)
+        self.ReturnUntillEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
+        self.ReturnUntillEdit.setObjectName("ReturnUntillEdit")
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.ReturnUntillEdit)
         self.label_5 = QtWidgets.QLabel(self.formLayoutWidget)
         self.label_5.setMinimumSize(QtCore.QSize(150, 40))
         font = QtGui.QFont()
@@ -61,32 +61,22 @@ class Ui_AddbookWindow(object):
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_5)
-        self.FathernameEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
-        self.FathernameEdit.setObjectName("FathernameEdit")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.FathernameEdit)
+        self.ReturnedtimeEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
+        self.ReturnedtimeEdit.setObjectName("ReturnedtimeEdit")
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.ReturnedtimeEdit)
         self.CancelButton = QtWidgets.QPushButton(self.formLayoutWidget)
         self.CancelButton.setMinimumSize(QtCore.QSize(160, 0))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.CancelButton.setFont(font)
         self.CancelButton.setObjectName("CancelButton")
-        self.formLayout.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.CancelButton)
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.CancelButton)
         self.InsertButton = QtWidgets.QPushButton(self.formLayoutWidget)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.InsertButton.setFont(font)
         self.InsertButton.setObjectName("InsertButton")
-        self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.InsertButton)
-        self.label_6 = QtWidgets.QLabel(self.formLayoutWidget)
-        self.label_6.setMinimumSize(QtCore.QSize(150, 40))
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        self.label_6.setFont(font)
-        self.label_6.setObjectName("label_6")
-        self.formLayout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_6)
-        self.AdresEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
-        self.AdresEdit.setObjectName("AdresEdit")
-        self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.AdresEdit)
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.InsertButton)
         AddbookWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(AddbookWindow)
         self.statusbar.setObjectName("statusbar")
@@ -99,21 +89,11 @@ class Ui_AddbookWindow(object):
         _translate = QtCore.QCoreApplication.translate
         AddbookWindow.setWindowTitle(_translate("AddbookWindow", "Добавить"))
         self.label_2.setText(_translate("AddbookWindow", "Билет"))
-        self.label_3.setText(_translate("AddbookWindow", "Фамилия"))
-        self.label_4.setText(_translate("AddbookWindow", "Имя"))
-        self.label_5.setText(_translate("AddbookWindow", "Отчество"))
+        self.label_3.setText(_translate("AddbookWindow", "Выдано"))
+        self.label_4.setText(_translate("AddbookWindow", "Вернуть до"))
+        self.label_5.setText(_translate("AddbookWindow", "Возвращено"))
         self.CancelButton.setText(_translate("AddbookWindow", "Отмена"))
         self.InsertButton.setText(_translate("AddbookWindow", "Внести данные"))
-        self.label_6.setText(_translate("AddbookWindow", "Адрес"))
-        def cancel():
-            print("галя у нас отмена")
-
-        self.CancelButton.clicked.connect(cancel)
-
-        def insert():
-            print("внести книгу")
-
-        self.InsertButton.clicked.connect(insert)
 
 
 if __name__ == "__main__":
