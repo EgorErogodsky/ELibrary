@@ -51,6 +51,17 @@ class ElibDBConnector:
                               'patronymic': patronymic,
                               'address': address})
 
+    def get_checked_out_data(self):
+        readers = "SELECT (library_card, surname, name, patronymic) FROM readers"
+        self._cursor.execute(readers)
+        readers = self._cursor.fetchall()
+
+        books = "SELECT (book_id, title) FROM books"
+        self._cursor.execute(books)
+        books = self._cursor.fetchall()
+
+        return books, readers
+
     def delete_book_or_reader(self, table, id):
         if table == 'books':
             col = 'book_id'
