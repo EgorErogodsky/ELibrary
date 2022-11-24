@@ -95,15 +95,6 @@ class Ui_AddbookWindow(object):
         self.CancelButton.setText(_translate("AddbookWindow", "Отмена"))
         self.InsertButton.setText(_translate("AddbookWindow", "Внести данные"))
 
-        def cancel():
-            print("галя у нас отмена")
-
-        self.CancelButton.clicked.connect(cancel)
-
-        def insert():
-            print("внести книгу")
-
-        self.InsertButton.clicked.connect(insert)
 
 
 

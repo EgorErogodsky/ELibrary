@@ -31,9 +31,6 @@ class Ui_AddbookWindow(object):
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_2)
-        self.BiletEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
-        self.BiletEdit.setObjectName("BiletEdit")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.BiletEdit)
         self.label_3 = QtWidgets.QLabel(self.formLayoutWidget)
         self.label_3.setMinimumSize(QtCore.QSize(150, 40))
         font = QtGui.QFont()
@@ -98,26 +95,17 @@ class Ui_AddbookWindow(object):
     def retranslateUi(self, AddbookWindow):
         _translate = QtCore.QCoreApplication.translate
         AddbookWindow.setWindowTitle(_translate("AddbookWindow", "Добавить"))
-        self.label_2.setText(_translate("AddbookWindow", "Билет"))
         self.label_3.setText(_translate("AddbookWindow", "Фамилия"))
         self.label_4.setText(_translate("AddbookWindow", "Имя"))
         self.label_5.setText(_translate("AddbookWindow", "Отчество"))
         self.CancelButton.setText(_translate("AddbookWindow", "Отмена"))
         self.InsertButton.setText(_translate("AddbookWindow", "Внести данные"))
         self.label_6.setText(_translate("AddbookWindow", "Адрес"))
-        def cancel():
-            print("галя у нас отмена")
-
-        self.CancelButton.clicked.connect(cancel)
-
-        def insert():
-            print("внести книгу")
-
-        self.InsertButton.clicked.connect(insert)
 
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     AddbookWindow = QtWidgets.QMainWindow()
     ui = Ui_AddbookWindow()
