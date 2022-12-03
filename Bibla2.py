@@ -767,7 +767,6 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "Имя автора"))
         self.label_3.setText(_translate("MainWindow", "Название"))
         self.label_4.setText(_translate("MainWindow", "Год издания"))
-        self.label_5.setText(_translate("MainWindow", "Искать -->"))
         self.SearchButton.setText(_translate("MainWindow", "Искать"))
         self.YearcomboBox.setItemText(0, _translate("MainWindow", ">"))
         self.YearcomboBox.setItemText(1, _translate("MainWindow", "<"))
@@ -810,9 +809,7 @@ class Ui_MainWindow(object):
         self.ResultsTab.setTabText(self.ResultsTab.indexOf(self.tab_3), _translate("MainWindow", "Выданные книги"))
         self.AuthorCheckBox.setText(_translate("MainWindow", "Строго"))
         self.BookNameCheckbox.setText(_translate("MainWindow", "Строго"))
-        self.label_6.setText(_translate("MainWindow", "Удалить -->"))
         self.DeleteButton.setText(_translate("MainWindow", "Удалить"))
-        self.label_7.setText(_translate("MainWindow", "Добавить -->"))
         self.AddButton.setText(_translate("MainWindow", "Добавить"))
 
 

@@ -51,12 +51,38 @@ class ElibDBConnector:
                               'patronymic': patronymic,
                               'address': address})
 
+    def add_checked_out_book(self, book_id, library_card, check_out_date, return_until):
+        add = ("INSERT INTO checked_out_books (book_id, library_card, check_out_date, return_date) "
+               "VALUES (%(book_id)s, %(library_card)s, %(check_out_date)s, %(return_until)s)")
+        self._cursor.execute(add,
+                             {'book_id': book_id,
+                              'library_card': library_card,
+                              'check_out_date': check_out_date,
+                              'return_until': return_until})
+
+    def actual_return_date_update(self, id, card, date, actual_date):
+        update = ("UPDATE checked_out_books "
+                  "SET actual_return_date = %(actual_date)s "
+                  "WHERE book_id = %(id)s "
+                  "AND library_card = %(card)s "
+                  "AND check_out_date = %(date)s")
+        self._cursor.execute(update,
+                             {'actual_date': actual_date,
+                              'id': id,
+                              'card': card,
+                              'date': date})
+
+    def checked_out_rows_count(self):
+        count = "SELECT COUNT(*) FROM checked_out_books"
+        self._cursor.execute(count)
+        return self._cursor.fetchone()
+
     def get_checked_out_data(self):
-        readers = "SELECT (library_card, surname, name, patronymic) FROM readers"
+        readers = "SELECT library_card, surname, name, patronymic FROM readers"
         self._cursor.execute(readers)
         readers = self._cursor.fetchall()
 
-        books = "SELECT (book_id, title) FROM books"
+        books = "SELECT book_id, title FROM books"
         self._cursor.execute(books)
         books = self._cursor.fetchall()
 
@@ -81,11 +107,15 @@ class ElibDBConnector:
                                                     id=id)
         self._cursor.execute(delete_rows)
 
-    def delete_checked_book(self, book_id, library_card):
+    def delete_checked_book(self, book_id, library_card, check_out_date):
         delete_row = ("DELETE FROM checked_out_books "
-                      "WHERE book_id = {book_id} "
-                      "AND library_card = {library_card}").format(book_id=book_id,
-                                                                  library_card=library_card)
+                      "WHERE book_id = %(book_id)s "
+                      "AND library_card = %(library_card)s "
+                      "AND check_out_date = %(check_out_date)s")
+        self._cursor.execute(delete_row,
+                             {'book_id': book_id,
+                              'library_card': library_card,
+                              'check_out_date': check_out_date})
 
     def search_book_by_id(self, id):
         search = ("SELECT * FROM books "

@@ -31,9 +31,9 @@ class Ui_AddbookWindow(object):
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_2)
-        self.BiletEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
-        self.BiletEdit.setObjectName("BiletEdit")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.BiletEdit)
+        self.BookComboBox = QtWidgets.QComboBox(self.formLayoutWidget)
+        self.BookComboBox.setObjectName("BookComboBox")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.BookComboBox)
         self.label_3 = QtWidgets.QLabel(self.formLayoutWidget)
         self.label_3.setMinimumSize(QtCore.QSize(150, 40))
         font = QtGui.QFont()
@@ -41,9 +41,9 @@ class Ui_AddbookWindow(object):
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_3)
-        self.VidanoEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
-        self.VidanoEdit.setObjectName("VidanoEdit")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.VidanoEdit)
+        self.CardComboBox = QtWidgets.QComboBox(self.formLayoutWidget)
+        self.CardComboBox.setObjectName("CardComboBox")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.CardComboBox)
         self.label_4 = QtWidgets.QLabel(self.formLayoutWidget)
         self.label_4.setMinimumSize(QtCore.QSize(150, 40))
         font = QtGui.QFont()
@@ -51,9 +51,9 @@ class Ui_AddbookWindow(object):
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_4)
-        self.ReturnUntillEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
-        self.ReturnUntillEdit.setObjectName("ReturnUntillEdit")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.ReturnUntillEdit)
+        self.CheckedOutDateEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
+        self.CheckedOutDateEdit.setObjectName("CheckedOutDateEdit")
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.CheckedOutDateEdit)
         self.label_5 = QtWidgets.QLabel(self.formLayoutWidget)
         self.label_5.setMinimumSize(QtCore.QSize(150, 40))
         font = QtGui.QFont()
@@ -61,9 +61,9 @@ class Ui_AddbookWindow(object):
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_5)
-        self.ReturnedtimeEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
-        self.ReturnedtimeEdit.setObjectName("ReturnedtimeEdit")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.ReturnedtimeEdit)
+        self.ReturnUntilEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
+        self.ReturnUntilEdit.setObjectName("ReturnUntilEdit")
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.ReturnUntilEdit)
         self.CancelButton = QtWidgets.QPushButton(self.formLayoutWidget)
         self.CancelButton.setMinimumSize(QtCore.QSize(160, 0))
         font = QtGui.QFont()
@@ -88,22 +88,12 @@ class Ui_AddbookWindow(object):
     def retranslateUi(self, AddbookWindow):
         _translate = QtCore.QCoreApplication.translate
         AddbookWindow.setWindowTitle(_translate("AddbookWindow", "Добавить"))
-        self.label_2.setText(_translate("AddbookWindow", "Билет"))
-        self.label_3.setText(_translate("AddbookWindow", "Выдано"))
-        self.label_4.setText(_translate("AddbookWindow", "Вернуть до"))
-        self.label_5.setText(_translate("AddbookWindow", "Возвращено"))
+        self.label_2.setText(_translate("AddbookWindow", "Книга"))
+        self.label_3.setText(_translate("AddbookWindow", "Читатель"))
+        self.label_4.setText(_translate("AddbookWindow", "Выдано"))
+        self.label_5.setText(_translate("AddbookWindow", "Вернуть до"))
         self.CancelButton.setText(_translate("AddbookWindow", "Отмена"))
         self.InsertButton.setText(_translate("AddbookWindow", "Внести данные"))
-
-        def cancel():
-            print("галя у нас отмена")
-
-        self.CancelButton.clicked.connect(cancel)
-
-        def insert():
-            print("внести книгу")
-
-        self.InsertButton.clicked.connect(insert)
 
 if __name__ == "__main__":
     import sys
