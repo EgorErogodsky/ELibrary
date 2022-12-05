@@ -29,9 +29,9 @@ def fill_table(table, data):
 
 class ELibraryMainWindow(Ui_MainWindow):
     def __init__(self):
-        self.elib_dbc = ElibDBConnector(host='localhost',
-                                        user='root',
-                                        password='root',
+        self.elib_dbc = ElibDBConnector(host='192.168.0.19',
+                                        user='egor',
+                                        password='egor',
                                         database='elibrary')
 
     def retranslateUi(self, MainWindow):
@@ -292,8 +292,7 @@ class ELibraryAddCheckedOutBookWindow(GivenbookAskWindow.Ui_AddbookWindow):
                 msgBox.setStandardButtons(QtWidgets.QMessageBox.Ok)
                 # msgBox.buttonClicked.connect(msgButtonClick)
                 msgBox.exec()
-
-        self.elib.update_table('checked_out_books')
+            self.elib.update_table('checked_out_books')
 
         self.CancelButton.clicked.connect(cancel)
         self.InsertButton.clicked.connect(insert)
